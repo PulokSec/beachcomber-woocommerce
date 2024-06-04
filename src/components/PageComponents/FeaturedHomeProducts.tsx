@@ -10,6 +10,11 @@ export default function FeaturedHomeProducts() {
     { title: 'LEEP', imageSrc: 'https://beachcomber.csoft.ca/wp-content/uploads/2024/06/model-leep.png', buttonText: 'View all LEEP Models >>', link: '#' },
     { title: 'Hybrid4', imageSrc: 'https://beachcomber.csoft.ca/wp-content/uploads/2024/06/model-hybrid.png', buttonText: 'View all Hybrid 4 Models >>', link: '#' },
   ];
+  const topCards = [
+    { title: 'A healthier happier you', imageSrc: 'https://www.beachcomberhottubs.com/media/wysiwyg/healthier-and-happier.jpg', buttonText: 'View all 700 Series Models >>', link: '#' },
+    { title: 'connect with loved ones', imageSrc: 'https://www.beachcomberhottubs.com/media/wysiwyg/connect-with_1.jpg', buttonText: 'View all 500 Series Models >>', link: '#' },
+    { title: 'Bring your paradise home', imageSrc: 'https://www.beachcomberhottubs.com/media/wysiwyg/bring-your-paradise-home-spa_1.jpg', buttonText: 'View all 750 SLB Models >>', link: '#' },
+  ];
   return (
     <section>
        <div className="container mx-auto flex flex-col items-center justify-center">
@@ -18,8 +23,8 @@ export default function FeaturedHomeProducts() {
        </div>
        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-8 p-8">
         {
-          Array.from({length: 3}).map((_, index) => (
-            <FeaturedProductCard item={{}} key={index} index={index} />
+          topCards?.map((item, index) => (
+            <FeaturedProductCard item={item} key={index} index={index} />
           ))
         }
        </div>

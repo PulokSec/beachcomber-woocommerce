@@ -5,6 +5,7 @@ import WhyBeachComber from '../Elements/WhyBeachComber'
 import HomeBottomComponent from '../BottomComponents/HomeBottomSection'
 import GuideSection from '../Elements/GuideSection'
 import ReasonsToChoose from '../Elements/ReasonToChoose'
+import ShoppingEasySection from '../Elements/ShoppingEasy'
 
 export default function HomePage() {
   return (
@@ -14,8 +15,8 @@ export default function HomePage() {
      <WhyBeachComber />
      <ReasonsToChoose />
      <HomeBottomComponent/>
+     <ShoppingEasySection />
      <GuideSection />
-     
     </main>
   )
 }

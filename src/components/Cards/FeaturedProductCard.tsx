@@ -19,7 +19,7 @@ const FeaturedProductCard = (props: Props) => {
   onMouseLeave={() => setHovered(null)}
 >
   <Image
-    src="https://www.beachcomberhottubs.com/media/wysiwyg/healthier-and-happier.jpg"
+    src={item?.imageSrc}
     width={200}
     height={200}
     alt="Happy in Hot Tub"
@@ -30,8 +30,8 @@ const FeaturedProductCard = (props: Props) => {
   <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-0"></div>
   <div className="relative z-10">
     <div className="container mx-auto ml-0 flex w-full flex-col items-center md:justify-between justify-center px-20 py-10 gap-8">
-      <p className="mt-5 text-md font-bold md:text-2xl leading-5">
-        <span className="md:text-[28px] text-[18px] text-white">A HEALTHIER<br />HAPPIER YOU</span>
+      <p className="mt-5 text-md font-bold md:text-2xl leading-5 text-center">
+        <span className="md:text-[28px] text-[18px] text-white uppercase">{item?.title}</span>
       </p>
       <button className="mt-4 text-center text-white bg-transparent border border-white px-4 py-2 rounded">LEARN MORE</button>
     </div>

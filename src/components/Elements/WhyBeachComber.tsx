@@ -12,6 +12,7 @@ declare global {
 const WhyBeachComber: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const playerRef = useRef<any>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
     // Load YouTube IFrame Player API script
@@ -28,7 +29,30 @@ const WhyBeachComber: React.FC = () => {
         },
       });
     };
-  }, []);
+
+    // Intersection Observer to pause video when out of viewport
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting && playerRef.current && isPlaying) {
+            playerRef.current.pauseVideo();
+            setIsPlaying(false);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (iframeRef.current) {
+      observer.observe(iframeRef.current);
+    }
+
+    return () => {
+      if (iframeRef.current) {
+        observer.unobserve(iframeRef.current);
+      }
+    };
+  }, [isPlaying]);
 
   const onPlayerReady = () => {
     // Player is ready to use
@@ -44,12 +68,12 @@ const WhyBeachComber: React.FC = () => {
       setIsPlaying(!isPlaying);
     }
   };
-
   return (
-    <div className="relative h-screen w-full flex items-center justify-center">
+    <div className="container mx-auto rounded shadow relative h-[80vh] w-full flex items-center justify-center">
       <iframe
+        ref={iframeRef}
         id="youtube-iframe"
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        className={`rounded shadow absolute top-0 left-0 w-full h-full object-cover z-0 transition-all duration-500 ${isPlaying ? 'z-20' : 'z-0'}`}
         width="560"
         height="315"
         src="https://www.youtube.com/embed/63mcYPxb2Jk?enablejsapi=1"
@@ -58,11 +82,11 @@ const WhyBeachComber: React.FC = () => {
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
       ></iframe>
-      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-80 z-10"></div>
-      <div className="absolute top-0 left-0 w-full h-1/4 bg-gradient-to-b from-black to-transparent z-10"></div>
-      <div className="absolute bottom-0 left-0 w-full h-1/4 bg-gradient-to-t from-black to-transparent z-10"></div>
+       <div className={`rounded shadow absolute top-0 left-0 w-full h-full bg-black transition-all duration-500 ${isPlaying ? 'opacity-0' : 'opacity-70'} z-10`}></div>
+      <div className={`rounded shadow absolute top-0 left-0 w-full h-1/4 bg-gradient-to-b from-black to-transparent transition-all duration-500 ${isPlaying ? 'opacity-0' : 'opacity-100'} z-10`}></div>
+      <div className={`rounded shadow absolute bottom-0 left-0 w-full h-1/4 bg-gradient-to-t from-black to-transparent transition-all duration-500 ${isPlaying ? 'opacity-0' : 'opacity-100'} z-10`}></div>
       <div
-        className="relative z-20 p-8 text-center text-white max-w-2xl"
+        className={`rounded shadow relative z-20 p-8 text-center text-white max-w-2xl transition-all duration-500 ${isPlaying ? 'opacity-0' : 'opacity-100'}`}
         onClick={togglePlayPause}
       >
         <h2 className="text-4xl font-bold mb-4">Why Buy a Beachcomber?</h2>
