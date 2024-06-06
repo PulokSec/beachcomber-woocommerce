@@ -4,12 +4,12 @@ const FilterSidebar = () => {
   const [filterOpen, setFilterOpen] = useState('');
 
   return (
-    <div className="p-4 bg-white shadow-lg rounded">
-      <div className="mb-4">
-        <p className="text-lg font-base">SHOPPING OPTIONS</p>
+    <div className="p-4 bg-white rounded">
+      <div className="mb-2">
+        <p className="text-xl font-bold">SHOPPING OPTIONS</p>
       </div>
-
-      <div className="mb-4">
+      <div className=" border border-t-black"></div>
+      <div className="mb-4 mt-2">
         <button className="w-full text-left" onClick={() =>filterOpen !== 'ENERGY CLASS' ? setFilterOpen('ENERGY CLASS') : setFilterOpen('')}>
           <p className="text-md font-base flex justify-between">
             ENERGY CLASS
@@ -70,12 +70,13 @@ const FilterSidebar = () => {
           </div>
         )}
       </div>
-      <div className="mt-8">
-          <h3 className="text-lg font-base mb-4">COMPARE PRODUCTS</h3>
+      <div className=" border border-t-black"></div>
+      <div className="mt-20">
+          <h3 className="text-xl font-bold mb-4">COMPARE PRODUCTS</h3>
           <p>You have no items to compare.</p>
         </div>
         <div className="mt-8">
-          <h3 className="text-lg font-base mb-4">MY WISH LIST</h3>
+          <h3 className="text-xl font-bold mb-4">MY WISH LIST</h3>
           <p>You have no items in your wish list.</p>
         </div>
     </div>

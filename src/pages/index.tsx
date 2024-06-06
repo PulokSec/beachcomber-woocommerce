@@ -1,17 +1,15 @@
 // Components
-import Hero from '@/components/Index/Hero.component';
-import DisplayProducts from '@/components/Product/DisplayProducts.component';
 import Layout from '@/components/Layout/Layout.component';
 
 // Utilities
 import client from '@/utils/apollo/ApolloClient';
 
 // Types
-import type { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next';
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 
 // GraphQL
-import { FETCH_ALL_PRODUCTS_QUERY } from '@/utils/gql/GQL_QUERIES';
 import HomePage from '@/components/Pages/HomePage';
+import { FETCH_ALL_PRODUCTS_QUERY } from '@/utils/gql/GQL_QUERIES';
 
 /**
  * Main index page
@@ -23,9 +21,8 @@ import HomePage from '@/components/Pages/HomePage';
 const Index: NextPage = ({
   products,
 }: InferGetStaticPropsType<typeof getStaticProps>) => (
-  <Layout title="Hjem">
+  <Layout title="Home">
     <HomePage/>
-    {/* {products && <DisplayProducts products={products} />} */}
   </Layout>
 );
 

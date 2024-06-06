@@ -5,7 +5,7 @@ const ProductCard = ({ product }: { product: any }) => {
   return (
     <div className="flex flex-col items-center justify-center p-4 bg-white rounded shadow-lg transition-transform transform hover:scale-105">
       <div className="w-full h-48 relative mb-4">
-        <Image src="https://www.beachcomberhottubs.com/media/catalog/product/m/o/model_720_anniversary_editions_spa_moonstone_front_small.jpg?optimize=high&bg-color=255,255,255&fit=bounds&height=280&width=280&canvas=280:280" layout="fill" objectFit="cover" alt={product.model} className="w-full h-full object-cover rounded-t" />
+        <Image src={product?.imageSrc} alt={product?.imageAlt} layout="fill" objectFit="cover" className="w-full h-full object-cover rounded-t" />
       </div>
       <div className="p-4">
         <h3 className="text-xl font-bold mb-2 text-center">{product.model}</h3>
@@ -29,9 +29,9 @@ const ProductCard = ({ product }: { product: any }) => {
           <input type="checkbox" className="form-checkbox" />
           <span className="ml-2">Add to Compare</span>
         </label>
-        <a href="#" className="inline-block mt-4 text-center text-white bg-black hover:bg-transparent hover:border border-black hover:text-black px-2 py-2 rounded text-sm">
+        <button className="w-full inline-block mt-4 text-center text-white bg-black hover:bg-transparent hover:border border-black hover:text-black px-2 py-2 rounded text-sm">
           LEARN MORE
-        </a>
+        </button>
         </div>
       </div>
     </div>
